@@ -1,4 +1,5 @@
-# Social Media Feed — SE-2510
+# Social Media Feed 
+SE-2510
 
 Java console prototype demonstrating nine design patterns in one cohesive social media feed workflow.
 
@@ -39,5 +40,3 @@ Behavioral: Strategy, Visitor, Observer.
 - `docs/UML_Diagram.png` — rendered UML diagram
 - `docs/Application_Screenshot.png` — application output screenshot
 
-## Scope
-This is an educational console prototype. It uses in-memory data and simulated console notifications; it does not connect to real social network APIs or a database.
