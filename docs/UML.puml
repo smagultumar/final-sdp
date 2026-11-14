@@ -1,0 +1,71 @@
+@startuml
+title Social Media Feed — UML Class Diagram
+skinparam classAttributeIconSize 0
+
+abstract class Post
+class TextPost
+class ImagePost
+Post <|-- TextPost
+Post <|-- ImagePost
+
+class PostBuilder
+PostBuilder ..> Post : builds
+abstract class PostFactory
+class TextPostFactory
+class ImagePostFactory
+PostFactory <|-- TextPostFactory
+PostFactory <|-- ImagePostFactory
+PostFactory ..> Post : creates
+
+interface FeedObserver
+class UserNotifier
+FeedObserver <|.. UserNotifier
+class Feed
+Feed o-- FeedObserver : notifies
+Feed o-- Post : stores
+
+interface FeedSortStrategy
+class NewestFirstStrategy
+class MostLikedStrategy
+FeedSortStrategy <|.. NewestFirstStrategy
+FeedSortStrategy <|.. MostLikedStrategy
+
+interface PostVisitor
+class FeedStatisticsVisitor
+PostVisitor <|.. FeedStatisticsVisitor
+Post ..> PostVisitor : accepts
+
+interface FeedRenderer
+class StandardFeedRenderer
+class CompactFeedRenderer
+FeedRenderer <|.. StandardFeedRenderer
+FeedRenderer <|.. CompactFeedRenderer
+abstract class FeedView
+class TimelineFeedView
+FeedView <|-- TimelineFeedView
+FeedView o-- FeedRenderer : Bridge
+
+interface SocialPlatformFactory
+class StandardPlatformFactory
+class CompactPlatformFactory
+SocialPlatformFactory <|.. StandardPlatformFactory
+SocialPlatformFactory <|.. CompactPlatformFactory
+
+interface PostDisplay
+class BasicPostDisplay
+abstract class PostDisplayDecorator
+class EmojiDecorator
+class HashtagDecorator
+PostDisplay <|.. BasicPostDisplay
+PostDisplay <|.. PostDisplayDecorator
+PostDisplayDecorator <|-- EmojiDecorator
+PostDisplayDecorator <|-- HashtagDecorator
+PostDisplayDecorator o-- PostDisplay : wraps
+
+class FeedService
+class SocialMediaFacade
+SocialMediaFacade --> FeedService : Facade
+SocialMediaFacade --> Feed
+FeedService --> FeedView
+FeedService ..> FeedSortStrategy
+@enduml
