@@ -38,8 +38,6 @@ Behavioral: Strategy, Visitor, Observer.
 - `docs/UML.puml` — editable PlantUML class diagram
 - `docs/UML_Diagram.png` — rendered UML diagram
 - `docs/Application_Screenshot.png` — application output screenshot
-- `docs/DEFENSE_NOTES.md` — concise defense notes
-- `docs/GIT_CONTRIBUTION.md` — contribution guidance
 
 ## Scope
 This is an educational console prototype. It uses in-memory data and simulated console notifications; it does not connect to real social network APIs or a database.
